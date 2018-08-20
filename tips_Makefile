@@ -1,0 +1,4 @@
+$@ cible
+$^ liste des dependances
+$< premiere dependance
+
