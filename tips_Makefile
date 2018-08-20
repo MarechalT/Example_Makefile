@@ -1,4 +1,32 @@
+# Abreviations
 $@ cible
 $^ liste des dependances
 $< premiere dependance
 
+# Redefine the default command to create executable without suffix (use g++ instead of gcc)
+%: %.o
+	$(LINK.cc) -o $@ $^
+
+
+#Define CXXFLAGS to automatically add flags in the command
+CXXFLAGS=-Wall
+
+# Automatically add needed files (included). Dependencies combined well with implicit ones\
+# (afficher.o: afficher.cc , etc.)
+# On first use or when you add new sources files, or change #includes of existing files
+# don't forget to launch the make depend
+ 
+
+depend:
+        makedepend $(sources)
+
+
+
+
+
+#always add these targets replace hello by your target:
+clean:
+	rm -f *~ *.o
+
+mrproper: clean
+	rm -f hello

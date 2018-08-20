@@ -14,7 +14,7 @@ hello.pdf: $(sources) $(entetes) Makefile
 	a2ps -o - $^ | ps2pdf - $@
 
 clean:
-	rm -f *~ *.o
+	rm -f *~ *.o *.bak
 
 mrproper: clean
 	rm -f hello
