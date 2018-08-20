@@ -9,6 +9,13 @@ objets=$(sources:.cc=.o)
 	$(LINK.cc) -o $@ $^
 
 hello: $(objets)
+#	g++ -o $@ $^
+
+hello.o: hello.cc afficher.h
+#	g++ -Wall -c $< //Default Command
+
+afficher.o: afficher.cc afficher.h
+#	g++ -Wall -c $< //Default Command
 
 hello.pdf: $(sources) $(entetes) Makefile
 	a2ps -o - $^ | ps2pdf - $@
@@ -18,6 +25,3 @@ clean:
 
 mrproper: clean
 	rm -f hello
-
-depend:
-	makedepend $(sources)

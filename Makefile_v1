@@ -1,0 +1,18 @@
+hello: hello.o afficher.o
+#	g++ -o hello hello.o afficher.o
+	g++ -o $@ $^
+
+hello.o: hello.cc afficher.h
+	g++ -Wall -c $<
+
+afficher.o: afficher.cc afficher.h
+	g++ -Wall -c $<
+
+hello.pdf: hello.cc afficher.h afficher.cc Makefile
+	a2ps -o - $^ | ps2pdf - $@
+
+clean:
+	rm -f *~
+
+mrproper: clean
+	rm -f hello
